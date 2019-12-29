@@ -4,8 +4,21 @@
 |email|string|null: false|
 |password|string|null: false|
 |name|string|null: false|
+
 ### Association
-- has_many :comments
+- has_many :groups, through: :group_users
+- has_many :group_users
+- has_many :messages
+
+## groupsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+### Association
+- has_many :users, through: :group_users
+- has_many :group_users
+- has_many :messages
 
 ## messagesテーブル
 |Column|Type|Options|
@@ -15,16 +28,10 @@
 |group_id|integer|null: false, foreign_key: true|
 |date|integer|null: false, foreign_key: true|
 |image|text||
+
 ### Association
 - belongs_to :user
-
-## groupsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-
-### Association
-- has_many :users, through: :group_users
+- belongs_to :group
 
 ## group_usersテーブル
 |Column|Type|Options|
