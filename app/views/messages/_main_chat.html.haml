@@ -2,37 +2,22 @@
   .message-info
     .message-info__left-box
       .message-info__left-box__group-name
-        天気
+        = @group.name
       %ul.message-info__left-box__member-list
-        しば
+        Member : 
         %li.message-info__left-box__member-list__member
-          zzz
+          = @group.id
     .message-info__edit-btn
-      = link_to "Edit", "#"
+      = link_to "Edit", edit_group_path(@group)
 
-
-  .message-list
-    .message-list__message
-      .message-list__message__name
-        .message-list__message__name-name
-          しば
-        .message-list__message__name-date
-          2020/01/06(MON) 22:00:00
-      .message-list__message__text
-        晴れ
-      .message-list__message__name2
-        .message-list__message__name2-name2
-          いぬ
-        .message-list__message__name2-date2
-          2020/01/07(TUE) 23:00:00
-      .message-list__message__text2
-        曇り
+  .messages
+    = render @messages
 
   .message-form
-    %form.message-form__message
-      .message-form__text
-        %input.message-form__box
-          %label.message-form__text__image
-            = icon("fa", "image", class: "icon")
-            %input.hidden{type: "file"}
-        %input.message-form__btn{type: "submit", value: "send"}
+    = form_for [@group, @message] do |f|
+      .message-form__box
+        = f.text_field :content, class: 'message-form__message', placeholder: 'type a message'
+        = f.label :image, class: 'message-form__box__image' do
+          = icon('fas', 'image', class: 'icon')
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'form__submit'
