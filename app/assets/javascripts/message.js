@@ -1,6 +1,4 @@
 $(function(){
-  // console.log(last_message_id);
-
   function buildHTML(message){
     if ( message.image ) {
       var html =
@@ -84,7 +82,6 @@ $('#new_message').on('submit', function(e){
       }
     })
     .fail(function() {
-      console.log('error');
     });
   };
   if (document.location.href.match(/\/groups\/\d+\/messages/)) {
