@@ -1,8 +1,6 @@
 # Load DSL and set up stages
-require "capistrano/setup"
 
 # Include default deployment tasks
-require "capistrano/deploy"
 
 # Load the SCM plugin appropriate to your project:
 #
@@ -27,6 +25,8 @@ install_plugin Capistrano::SCM::Git
 #   https://github.com/capistrano/passenger
 #
 # require "capistrano/rvm"
+require "capistrano/setup"
+require "capistrano/deploy"
 require "capistrano/rbenv"
 # require "capistrano/chruby"
 require "capistrano/bundler"
