@@ -6,7 +6,9 @@
       %ul.message-info__left-box__member-list
         Member : 
         %li.message-info__left-box__member-list__member
-          = @group.id
+          - @group.group_users.each do |group_user|
+            = group_user.user.name
+
     .message-info__edit-btn
       = link_to "Edit", edit_group_path(@group)
 
